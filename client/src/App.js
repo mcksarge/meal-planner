@@ -1,10 +1,13 @@
 import './App.css';
 import Home from './components/Home';
 import LoginPage from './components/LoginPage';
-import Meals from './components/Meals';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MealList from './components/MealList';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {useState, useEffect} from "react";
 
 function App() {
+
+
   return (
     <div className="App">
         <h1>The Meal Planner</h1>
@@ -12,7 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path='/login' element={<LoginPage />} />
-            <Route path='/meals' element={<Meals />} />
+            <Route path='/meals' element={<MealList />} />
           </Routes>
         </BrowserRouter>
     </div>
