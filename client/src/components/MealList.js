@@ -16,7 +16,6 @@ function Meals(){
             <MealCard 
                 key={i}
                 name={meal.name}
-                recipe={meal.recipe}
                 cooking_time={meal.cooking_time}
                 image={meal.image}
             />

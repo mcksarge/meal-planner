@@ -1,14 +1,14 @@
 
 
-function MealCard({name, recipe, cooking_time, image}) {
+function MealCard({name, cooking_time, image}) {
 
 
     return (
-        <div>
+        <div class="meal-card">
             <h3>{name}</h3>
             <h4>Cooking Time: {cooking_time}</h4>
-            <img src={image} classname="meal-image-card"></img>
-            <p>{recipe}</p>
+            <img src={image} class="meal-image-card"></img>
+            <button>Recipe</button>
         </div>
     )
 }
