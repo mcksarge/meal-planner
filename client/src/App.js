@@ -1,14 +1,20 @@
 import './App.css';
+import Home from './components/Home';
+import LoginPage from './components/LoginPage';
+import Meals from './components/Meals';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
         <h1>The Meal Planner</h1>
-        <button id="sign-in-btn" className="main-account-btn">Sign in</button>
-        <button id="create-account-btn" className="main-account-btn">Create Account</button>
-      </header>
-
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/meals' element={<Meals />} />
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 }
