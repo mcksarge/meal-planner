@@ -32,4 +32,6 @@ body {
   height: 300px;
 }
 
-
+.link-btn {
+  margin-right: 10px;
+}
