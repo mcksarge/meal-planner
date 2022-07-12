@@ -7,12 +7,17 @@ import {Routes, Route} from "react-router-dom";
 import {useState, useEffect} from "react";
 
 function App() {
+  const [user, setUser] = useState(null)
+
+  function handleLogin(user) {
+    setUser(user)
+  }
 
 
   return (
     <div className="App">
         <h1>The Meal Planner</h1>
-        <Links />
+        <Links onLogin={handleLogin} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path='/login' element={<LoginPage />} />

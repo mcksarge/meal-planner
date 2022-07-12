@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function LoginPage(){
+function LoginPage({onLogin}){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
@@ -17,7 +17,7 @@ function LoginPage(){
         })
         .then(res => {
             if(res.ok){
-                
+                res.json().then((user) => onLogin(user))
             }
         })
     }
