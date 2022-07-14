@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function LoginPage({onLogin}){
     const [username, setUsername] = useState("")
@@ -31,8 +32,12 @@ function LoginPage({onLogin}){
                 <input placeholder="username" onChange={((e) => setUsername(e.target.value))}></input>
                 <br></br>
                 <input placeholder="password" type="password" onChange={((e) => setPassword(e.target.value))}></input>
+                <br></br>
+                <button id="sign-in-btn" className="main-account-btn">Sign in</button>
+                <br></br>
             </form>
-            <submit id="sign-in-btn" className="main-account-btn">Sign in</submit>
+            <p>Don't have an account?</p>
+            <NavLink to="/signuppage" exact>Create Account</NavLink>
         </div>
     )
 }
