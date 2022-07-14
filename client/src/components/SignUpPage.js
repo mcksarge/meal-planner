@@ -8,6 +8,7 @@ function SignUpPage({onLogin}) {
 
     function handleSubmit(e) {
         e.preventDefault()
+        console.log(e)
 
         fetch("/signup", {
             method: "POST",
@@ -34,11 +35,11 @@ function SignUpPage({onLogin}) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input placeholder="username"></input>
+                <input placeholder="username" onChange={((e) => setUsername(e.target.value))}></input>
                 <br></br>
-                <input placeholder="name"></input>
+                <input placeholder="name" onChange={((e) => setName(e.target.value))}></input>
                 <br></br>
-                <input placeholder="password"></input>
+                <input placeholder="password" type="password" onChange={((e) => setPassword(e.target.value))}></input>
                 <br></br>
                 <button type="submit">Submit</button>
             </form>
