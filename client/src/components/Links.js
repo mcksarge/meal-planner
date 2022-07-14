@@ -6,9 +6,9 @@ function Links() {
 
     return (
         <div>
-            <NavLink to="/" exact className="link-btn">Home</NavLink>
+            <NavLink to="/home" exact className="link-btn">Home</NavLink>
             <NavLink to="/meals" exact className="link-btn">Meals</NavLink>
-            <NavLink to="/login" exact className="link-btn">Login</NavLink>
+            <NavLink to="/logout" exact className="link-btn">Logout</NavLink>
         </div>
     )
 }

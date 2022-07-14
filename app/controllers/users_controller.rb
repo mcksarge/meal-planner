@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
     before_action :authorize
 
-    def index
-        users = User.all
-        render json: users
+    def create
+        byebug
     end
 
     def show
@@ -11,10 +10,16 @@ class UsersController < ApplicationController
         render json: user
     end
 
+    
+
     private
 
     def authorize
         render json: { errors: ["Not Authorized"] }, status: :unauthorized
+    end
+
+    def user_params
+        params.permit(:username, :password)
     end
 
 end

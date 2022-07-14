@@ -19,8 +19,8 @@ function App() {
         <h1>The Meal Planner</h1>
         <Links onLogin={handleLogin} />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path='/login' element={<LoginPage />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path='/home' element={<Home />} />
           <Route path='/meals' element={<MealList />} />
         </Routes>
     </div>
