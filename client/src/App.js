@@ -27,11 +27,11 @@ function App() {
 
   //Auto login
   useEffect(() => {
-    fetch('/auth').then((res) => {
+    fetch('/me').then((res) => {
       if(res.ok){
         res.json().then((user) => setCurrentUser(user));
       }
-    })
+    });
   }, []);
 
   if(!currentUser) return <LoginPage onLogin={setCurrentUser} />

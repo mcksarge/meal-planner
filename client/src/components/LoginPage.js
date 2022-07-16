@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 function LoginPage({onLogin}){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [showLogin, setShowLogin] = useState(true)
     const [errors, setErrors] = useState([])
 
     function handleSubmit(e) {
