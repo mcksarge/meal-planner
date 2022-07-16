@@ -5,10 +5,11 @@ function LoginPage({onLogin}){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [showLogin, setShowLogin] = useState(true)
+    const [errors, setErrors] = useState([])
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("Submit Complete")
+        
         const user = {username, password}
         
         fetch('/login', {
@@ -22,7 +23,10 @@ function LoginPage({onLogin}){
             if(res.ok){
                 res.json()
                 .then((user) => onLogin(user))
-            }
+            } else {
+                res.json()
+                .then((err) => setErrors(err.errors))
+            };
         })
     }
 
