@@ -17,8 +17,13 @@ body {
   color: #1B5263;
 }
 
-.main-account-btn {
+#sign-in-btn {
   margin-bottom: 10px;
+}
+
+.login-page-input {
+  margin: auto;
+  width: 300px;
 }
 
 .meal-image-card {
@@ -30,8 +35,39 @@ body {
   border: 1px solid black;
   width: 200px;
   height: 300px;
+  margin-top: 50px;
+  padding: 10px;
+  height: auto;
 }
 
 .link-btn {
   margin-right: 10px;
+}
+
+#meal-list {
+  display: flex;
+  margin: auto;
+  width: 75%;
+  justify-content: space-between;
+}
+
+.recipe-btn {
+  margin: auto;
+}
+
+#login-page {
+  display: flex;
+  height: 750px;
+}
+
+#new-account-div {
+  margin: auto;
+}
+
+#login-form-div {
+  margin: auto;
+}
+
+#login-page-title {
+  margin: auto;
 }

@@ -8,20 +8,40 @@ import {Routes, Route} from "react-router-dom";
 import {useState, useEffect} from "react";
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null)
 
   function handleLogin(user) {
-    setUser(user)
+    setCurrentUser(user)
   }
 
+  function handleLogout() {
+    fetch("/logout", {
+      method: "DELETE"
+    })
+    .then(res => {
+      if(res.ok){
+        setCurrentUser(null)
+      }
+    })
+  }
 
+  //Auto login
+  useEffect(() => {
+    fetch('/auth').then((res) => {
+      if(res.ok){
+        res.json().then((user) => setCurrentUser(user));
+      }
+    })
+  }, []);
+
+  if(!currentUser) return <LoginPage onLogin={setCurrentUser} />
   return (
     <div className="App">
         <h1>The Meal Planner</h1>
+        <button id="logout-btn" onClick={handleLogout}>Logout</button>
         <Links />
         <Routes>
-          <Route path="/" element={<LoginPage onLogin={handleLogin} />} />
-          <Route path='/home' element={<Home />} />
+          <Route path='/' element={<Home currentUser={currentUser} />} />
           <Route path='/meals' element={<MealList />} />
           <Route path='/signuppage' element={<SignUpPage onLogin={handleLogin} />} />
         </Routes>

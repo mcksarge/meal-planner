@@ -25,7 +25,7 @@ function Meals(){
 
 
     return (
-        <div>
+        <div id="meal-list">
             {meals}
         </div>
     )

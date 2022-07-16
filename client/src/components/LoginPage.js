@@ -31,17 +31,20 @@ function LoginPage({onLogin}){
     }
 
     return (
-        <div id="Login buttons">
-            <form onSubmit={handleSubmit}>
-                <input placeholder="username" onChange={((e) => setUsername(e.target.value))}></input>
-                <br></br>
-                <input placeholder="password" type="password" onChange={((e) => setPassword(e.target.value))}></input>
-                <br></br>
-                <button id="sign-in-btn" className="main-account-btn">Sign in</button>
-                <br></br>
-            </form>
-            <p>Don't have an account?</p>
-            <NavLink to="/signuppage" exact>Create Account</NavLink>
+        <div id="login-page">
+            <div id="login-form-div">
+                <form onSubmit={handleSubmit}>
+                <h1 id="login-page-title">The Meal Planner</h1>
+                    <input className="login-page-input" placeholder="username" onChange={((e) => setUsername(e.target.value))}></input>
+                    <br></br>
+                    <input className="login-page-input" placeholder="password" type="password" onChange={((e) => setPassword(e.target.value))}></input>
+                    <br></br>
+                    <button id="sign-in-btn">Sign in</button>
+                    <br></br>
+                    <p>Don't have an account?</p>
+                <NavLink to="/signuppage" exact>Create Account</NavLink>
+                </form>
+            </div>
         </div>
     )
 }

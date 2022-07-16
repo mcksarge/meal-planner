@@ -1,11 +1,11 @@
 
 
-function Home() {
+function Home({currentUser}) {
 
 
     return (
         <div>
-            <h3>Welcome Home!</h3>
+            <h3>Welcome Home {currentUser.name}!</h3>
         </div>
     )
 
