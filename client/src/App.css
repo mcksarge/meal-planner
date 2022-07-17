@@ -71,3 +71,8 @@ body {
 #login-page-title {
   margin: auto;
 }
+
+#new-recipe-btn {
+  margin-top: 100px;
+  font-size: large;
+}
