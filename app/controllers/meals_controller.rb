@@ -15,6 +15,25 @@ class MealsController < ApplicationController
         end
     end
 
+    def show
+        meal = Meal.find_by(id: params[:id])
+        if meal
+            render json: meal, include: [:reviews]
+        else
+            render json: {errors: ["Meal not found"]}, status: :no_content
+        end
+    end
+
+    def destroy
+        meal = Meal.find_by(id: params[:id])
+        if meal
+            meal.destroy
+            render json: meal
+        else
+            render json: {errors: ["Meal not found"]}, status: :no_content
+        end
+    end
+
     private
 
     def meal_params

@@ -1,33 +1,35 @@
 import React from "react";
 import MealCard from "./MealCard";
 import {useState, useEffect} from "react";
+import RecipePage from "./RecipePage";
 
-function Meals(){
-    const [allMeals, setAllMeals] = useState([])
-    const [refreshMeals, setRefreshMeals] = useState(true)
+function Meals({meals, refreshMeals}){
     const [showAddMeal, setShowAddMeal] = useState(false)
     const [name, setName] = useState("")
     const [recipe, setRecipe] = useState("")
     const [image, setImage] = useState("")
     const [cooking_time, setCooking_time] = useState("")
 
-    useEffect(() => {
-        setRefreshMeals(false)
-        fetch("http://localhost:3000/meals")
-            .then((res) => res.json())
-            .then((meals) => setAllMeals(meals))
-    }, [refreshMeals])
 
-    let meals = allMeals.map((meal, i) => {
+    let allMeals = meals.map((meal, i) => {
         return (
-            <MealCard 
+            <>
+                <MealCard 
                 key={i}
+                id={meal.id}
                 name={meal.name}
                 cooking_time={meal.cooking_time}
+                recipe={meal.recipe}
                 image={meal.image}
-            />
+                onDeleteMeal={onDelete}
+                />
+            </>
         )
     })
+
+    function onDelete(){
+        refreshMeals()
+    }
 
     function handleNewMeal() {
         setShowAddMeal(true)
@@ -49,7 +51,7 @@ function Meals(){
             })
         })
         .then((res) => res.json())
-        .then((newMeal) => setRefreshMeals(true))
+        .then((newMeal) => refreshMeals(newMeal))
     }
     
 
@@ -58,7 +60,7 @@ function Meals(){
             <>
                 <button id="new-recipe-btn" onClick={handleNewMeal}>Add Recipe</button>
                 <div id="meal-list">
-                    {meals}
+                    {allMeals}
                 </div>
             </>
         )
@@ -76,7 +78,7 @@ function Meals(){
                     </form>
                 </div>
                 <div id="meal-list">
-                    {meals}
+                    {allMeals}
                 </div>
             </>
         )
