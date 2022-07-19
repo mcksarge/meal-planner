@@ -76,3 +76,8 @@ body {
   margin-top: 100px;
   font-size: large;
 }
+
+.meal-image {
+  width: 500px;
+  height: 500px;
+}

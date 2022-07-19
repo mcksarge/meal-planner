@@ -13,6 +13,9 @@ function RecipePage({meals}) {
     return (
         <div>
             <p>Hello Recipes!  Get your recipes here!</p>
+            <h1>{currentMeal.name}</h1>
+            <img src={currentMeal.image} className="meal-image"></img>
+            <h2>Recipe:</h2>
             <p>{currentMeal.recipe}</p>
         </div>
     )
