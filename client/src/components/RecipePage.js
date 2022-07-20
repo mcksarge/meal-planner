@@ -2,9 +2,9 @@ import {useParams} from 'react-router-dom';
 import {useState} from 'react';
 import MealReview from './MealReview';
 
-function RecipePage({meals}) {
+function RecipePage({meals, allUsers}) {
     let params = useParams()
-    
+    console.log("from recipes: " + allUsers)
 
     let currentId = params.id
     
@@ -17,7 +17,7 @@ function RecipePage({meals}) {
 
     let mealReviews = review.map((review, i) => {
         return (
-            <MealReview key={i} rating={review.rating} review={review.review} user={review.user} />
+            <MealReview key={i} rating={review.rating} review={review.review} userId={review.user_id} users={allUsers} />
         )
     })
 
@@ -34,6 +34,7 @@ function RecipePage({meals}) {
             <button>Add a review</button>
             <div className="meal-review">
                 <div>
+                    <h2>Reviews:</h2>
                     {mealReviews}
                 </div>
             </div>

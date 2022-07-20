@@ -11,14 +11,22 @@ import {useState, useEffect} from "react";
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [allMeals, setAllMeals] = useState([])
+  const [allUsers, setAllUsers] = useState([])
   const [refreshMeals, setRefreshMeals] = useState(true)
 
+  //Get Meals
   useEffect(() => {
     setRefreshMeals(false)
     fetch("http://localhost:3000/meals")
-        .then((res) => res.json())
-        .then((meals) => setAllMeals(meals))
+      .then((res) => res.json())
+      .then((meals) => setAllMeals(meals))
+
+    fetch("http://localhost:3000/users")
+      .then((res) => res.json())
+      .then((users) => setAllUsers(users))
+
   }, [refreshMeals])
+
 
   function handleLogin(user) {
     setCurrentUser(user)
@@ -58,7 +66,7 @@ function App() {
           <Route path='/' element={<Home currentUser={currentUser} />} />
           <Route path='/meals' element={<MealList meals={allMeals} refreshMeals={handleRefreshMeals} />} />
           <Route path='/signuppage' element={<SignUpPage onLogin={handleLogin} />} />
-          <Route path='/meals/:id' element={<RecipePage meals={allMeals} />} />
+          <Route path='/meals/:id' element={<RecipePage meals={allMeals} allUsers={allUsers} />} />
         </Routes>
     </div>
   );
