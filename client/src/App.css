@@ -46,6 +46,7 @@ body {
 
 #meal-list {
   display: flex;
+  flex-wrap: wrap;
   margin: auto;
   width: 75%;
   justify-content: space-between;

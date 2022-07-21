@@ -10,10 +10,18 @@ import {useState, useEffect} from "react";
 
 function App() {
   const [user, setUser] = useState(null)
-  const [refreshMeals, setRefreshMeals] = useState(true)
+  const [meals, setMeals] = useState([])
 
-  //Get Meals
-  // 
+
+  //Gets meals
+  useEffect(() => {
+    fetch("http://localhost:3000/meals")
+      .then((res) => res.json())
+      .then((data) => setMeals(data))
+  }, [])
+  /************************* */
+
+  // Auto Login
     useEffect(() => {
       
       fetch('/me').then((res) => {
@@ -25,17 +33,10 @@ function App() {
     }, [])
 
 
-
-
   function handleLogin(user) {
     setUser(user)
   }
 
-  function handleRefreshMeals() {
-    setRefreshMeals(true)
-  }
-
-  //Auto login
   
   console.log("from app")
   if(!user) return <LoginPage onLogin={setUser} />
@@ -45,9 +46,9 @@ function App() {
         <Links user={user} setUser={setUser} />
         <Routes>
           <Route path='/' element={<Home currentUser={user} />} />
-          <Route path='/meals' element={<MealList refreshMeals={handleRefreshMeals} />} />
+          <Route path='/meals' element={<MealList meals={meals} />} />
           <Route path='/signuppage' element={<SignUpPage onLogin={handleLogin} />} />
-          <Route path='/meals/:id' element={<RecipePage />} />
+          <Route path='/meals/:id' element={<RecipePage meals={meals} />} />
         </Routes>
     </div>
   );

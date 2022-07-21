@@ -1,17 +1,13 @@
 
 
-function MealReview({key, rating, review, userId, users}) {
-    console.log(userId)
-    console.log(users)
+function MealReview(props) {
+    console.log(props)
     
-    let reviewUser = users.find((user) => {
-        return user.id == userId
-    })
 
     return (
         <div className="review-div">
-            <h3>"{review}"</h3>
-            <p>{reviewUser.name}</p>
+            <h3>""</h3>
+            
         </div>
     )
 }

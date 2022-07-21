@@ -3,8 +3,7 @@ import MealCard from "./MealCard";
 import {useState, useEffect} from "react";
 import RecipePage from "./RecipePage";
 
-function Meals({}){
-    const [meals, setMeals] = useState([])
+function Meals({meals}){
     const [refreshMeals, setRefreshMeals] = useState(true)
     const [showAddMeal, setShowAddMeal] = useState(false)
     const [name, setName] = useState("")
@@ -12,14 +11,6 @@ function Meals({}){
     const [image, setImage] = useState("")
     const [cooking_time, setCooking_time] = useState("")
 
-    //Gets meals
-    useEffect(() => {
-          setRefreshMeals(false)
-          fetch("http://localhost:3000/meals")
-            .then((res) => res.json())
-            .then((data) => setMeals(data))
-    }, [refreshMeals])
-    /************************* */
 
     let allMeals = meals.map((meal, i) => {
         return (
@@ -45,6 +36,7 @@ function Meals({}){
         setShowAddMeal(true)
     }
 
+    //Add meal
     function handleSubmit(e) {
         e.preventDefault()
 
@@ -63,7 +55,7 @@ function Meals({}){
         .then((res) => res.json())
         .then((newMeal) => refreshMeals(newMeal))
     }
-    
+    /********************* */
 
     if(!showAddMeal){
         return (

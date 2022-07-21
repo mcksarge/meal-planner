@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :users
-  resources :meals
+  resources :meals do
+    resources :reviews, only: [:show, :index]
+  end
   resources :reviews
 
 
