@@ -1,10 +1,15 @@
 import {useParams} from 'react-router-dom';
 import {useState} from 'react';
 import MealReview from './MealReview';
+import {useLocation} from "react-router-dom";
 
-function RecipePage({meals, allUsers}) {
+function RecipePage() {
     let params = useParams()
-    console.log("from recipes: " + allUsers)
+    let location = useLocation()
+    let meals = location.state
+    console.log(location.state)
+    
+
 
     let currentId = params.id
     
@@ -17,7 +22,7 @@ function RecipePage({meals, allUsers}) {
 
     let mealReviews = review.map((review, i) => {
         return (
-            <MealReview key={i} rating={review.rating} review={review.review} userId={review.user_id} users={allUsers} />
+            <MealReview key={i} rating={review.rating} review={review.review} userId={review.user_id} />
         )
     })
 

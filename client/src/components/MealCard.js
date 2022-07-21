@@ -21,7 +21,13 @@ function MealCard({name, id, cooking_time, recipe, image, onDeleteMeal}) {
             <h4>Cooking Time: {cooking_time} minutes</h4>
             <img src={image} alt={name} className="meal-image-card"></img>
             <br></br>
-            <NavLink to={`/meals/${id}`} className="recipe-btn">Recipe</NavLink>
+            <NavLink 
+            to={`/meals/${id}`}
+            state={{test: 'test'}} 
+            className="recipe-btn"
+            >
+                Recipe
+            </NavLink>
         </div>
     )
 }

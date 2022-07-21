@@ -3,13 +3,23 @@ import MealCard from "./MealCard";
 import {useState, useEffect} from "react";
 import RecipePage from "./RecipePage";
 
-function Meals({meals, refreshMeals}){
+function Meals({}){
+    const [meals, setMeals] = useState([])
+    const [refreshMeals, setRefreshMeals] = useState(true)
     const [showAddMeal, setShowAddMeal] = useState(false)
     const [name, setName] = useState("")
     const [recipe, setRecipe] = useState("")
     const [image, setImage] = useState("")
     const [cooking_time, setCooking_time] = useState("")
 
+    //Gets meals
+    useEffect(() => {
+          setRefreshMeals(false)
+          fetch("http://localhost:3000/meals")
+            .then((res) => res.json())
+            .then((data) => setMeals(data))
+    }, [refreshMeals])
+    /************************* */
 
     let allMeals = meals.map((meal, i) => {
         return (

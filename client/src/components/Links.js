@@ -1,12 +1,25 @@
 import { NavLink } from 'react-router-dom';
 
-function Links() {
+function Links({user, setUser}) {
 
+    //Handles logout
+    function handleLogout() {
+        fetch("/logout", {
+          method: "DELETE"
+        })
+        .then(res => {
+          if(res.ok){
+            setUser(null)
+          }
+        })
+      }
+    /************************ */
 
     return (
         <div>
             <NavLink to="/" exact className="link-btn">Home</NavLink>
             <NavLink to="/meals" exact className="link-btn">Meals</NavLink>
+            <button id="logout-btn" onClick={handleLogout}>Logout</button>
         </div>
     )
 }
