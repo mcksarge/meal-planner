@@ -48,7 +48,7 @@ function App() {
           <Route path='/' element={<Home currentUser={user} />} />
           <Route path='/meals' element={<MealList meals={meals} />} />
           <Route path='/signuppage' element={<SignUpPage onLogin={handleLogin} />} />
-          <Route path='/meals/:id' element={<RecipePage meals={meals} />} />
+          <Route path='/meals/:id' element={<RecipePage meals={meals} user={user} />} />
         </Routes>
     </div>
   );

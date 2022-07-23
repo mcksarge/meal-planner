@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 import RecipePage from "./RecipePage";
 
 function Meals({meals}){
-    const [refreshMeals, setRefreshMeals] = useState(true)
+    const [mealList, setMealList] = useState(meals)
     const [showAddMeal, setShowAddMeal] = useState(false)
     const [name, setName] = useState("")
     const [recipe, setRecipe] = useState("")
@@ -12,7 +12,7 @@ function Meals({meals}){
     const [cooking_time, setCooking_time] = useState("")
 
 
-    let allMeals = meals.map((meal, i) => {
+    let allMeals = mealList.map((meal, i) => {
         return (
             <>
                 <MealCard 
@@ -28,8 +28,9 @@ function Meals({meals}){
         )
     })
 
-    function onDelete(){
-        refreshMeals()
+    function onDelete(deletedMeal){
+        const updatedMeals = meals.filter((meal) => meal.id !== deletedMeal)
+        setMealList(updatedMeals)
     }
 
     function handleNewMeal() {
@@ -53,7 +54,7 @@ function Meals({meals}){
             })
         })
         .then((res) => res.json())
-        .then((newMeal) => refreshMeals(newMeal))
+        .then((newMeal) => setMealList([...mealList, newMeal]))
     }
     /********************* */
 
@@ -73,9 +74,15 @@ function Meals({meals}){
                 <div id="new-recipe-div">
                     <form onSubmit={handleSubmit}>
                         <input placeholder="Meal name" onChange={(e) => setName(e.target.value)}></input>
+                        <br></br>
                         <input placeholder="Cooking Time" onChange={(e) => setCooking_time(e.target.value)}></input>
-                        <input placeholder="Recipe" onChange={(e) => setRecipe(e.target.value)}></input>
-                        <input placeholder="Image" onChange={(e) => setImage(e.target.value)}></input>
+                        <br></br>
+                        <textarea rows = "5" cols = "60" name = "recipe" onChange={(e) => setRecipe(e.target.value)}>
+                            Enter recipe here...
+                        </textarea>
+                        <br></br>
+                        <input placeholder="Image URL" onChange={(e) => setImage(e.target.value)}></input>
+                        <br></br>
                         <button id="add-recipe-btn">Submit</button>
                     </form>
                 </div>

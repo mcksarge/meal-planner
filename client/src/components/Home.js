@@ -2,7 +2,6 @@
 
 function Home({currentUser}) {
 
-
     return (
         <div>
             <h3>Welcome Home {currentUser.name}!</h3>

@@ -15,6 +15,11 @@ class MealsController < ApplicationController
         end
     end
 
+    def summary
+        meal = Meal.find(params[:id])
+        render json: meal.reviews
+    end
+
     def show
         meal = Meal.find_by(id: params[:id])
         if meal
