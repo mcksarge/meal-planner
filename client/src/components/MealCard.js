@@ -1,14 +1,16 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Routes, Route } from 'react-router-dom'
+import RecipePage from "./RecipePage";
 
-function MealCard({name, id, cooking_time, recipe, image, onDeleteMeal}) {
+function MealCard({meal, onDeleteMeal, user}) {
+
 
     function handleDelete() {
-        fetch(`/meals/${id}`, {
+        fetch(`/meals/${meal.id}`, {
             method: "DELETE"
         })
         .then((res) => {
             if(res.ok){
-                onDeleteMeal(id)
+                onDeleteMeal(meal.id)
             }
         })
     }
@@ -17,11 +19,14 @@ function MealCard({name, id, cooking_time, recipe, image, onDeleteMeal}) {
     return (
         <div className="meal-card">
             <button className="delete-meal-btn" onClick={handleDelete}>X</button>
-            <h3>{name}</h3>
-            <h4>Cooking Time: {cooking_time} minutes</h4>
-            <img src={image} alt={name} className="meal-image-card"></img>
+            <h3>{meal.name}</h3>
+            <h4>Cooking Time: {meal.cooking_time} minutes</h4>
+            <img src={meal.image} alt={meal.name} className="meal-image-card"></img>
             <br></br>
-            <NavLink to={`/meals/${id}`} className="recipe-btn">Recipe</NavLink>
+            <NavLink to={`/meals/${meal.id}`} className="recipe-btn">Recipe</NavLink>
+            {/* <Routes>
+                <Route path=':id' element={<RecipePage meal={meal} user={user} />} />
+            </Routes>  */}
         </div>
     )
 }

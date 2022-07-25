@@ -17,8 +17,8 @@ function Links({user, setUser}) {
 
     return (
         <div>
-            <NavLink to="/" exact className="link-btn">Home</NavLink>
-            <NavLink to="/meals" exact className="link-btn">Meals</NavLink>
+            <NavLink to="/" exact className="link-btn"><button>Home</button></NavLink>
+            <NavLink to="/meals" exact className="link-btn"><button>Meals</button></NavLink>
             <button id="logout-btn" onClick={handleLogout}>Logout</button>
         </div>
     )

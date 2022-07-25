@@ -25,6 +25,16 @@ class ReviewsController < ApplicationController
         render json: review.user
     end
 
+    def destroy
+        review = Review.find_by(id: params[:id])
+        if review
+            review.destroy
+            render json: review
+        else
+            render json: {errors: ["Review not found"]}, status: :no_content
+        end
+    end
+
     private
 
     def review_params

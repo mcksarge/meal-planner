@@ -7,7 +7,9 @@ function RecipePage({meals, user}) {
     const [showReview, setShowReview] = useState(false)
     const [review, setReview] = useState("")
     const [rating, setRating] = useState("")
+    
 
+   
    
 
 
@@ -17,7 +19,6 @@ function RecipePage({meals, user}) {
     const currentMeal = meals.find((meal) => {
         return meal.id == currentId
     })
-
 
     
     
@@ -35,7 +36,7 @@ function RecipePage({meals, user}) {
     function handleSubmit(e) {
         e.preventDefault()
         let user_id = user.id
-        let meal_id = currentId
+        let meal_id = currentMeal.id
 
         
         fetch(`/reviews`, {
@@ -84,9 +85,11 @@ function RecipePage({meals, user}) {
                 <h2>Recipe:</h2>
                 <p>{currentMeal.recipe}</p>
                 <form id="add-review-form" onSubmit={handleSubmit}>
-                    <label>Choose Rating:</label>
+                    <h4>Create Review:</h4>
                     <br></br>
+                    <label>Select Rating: </label>
                     <select onChange={(e) => setRating(e.target.value)}>
+                        
                         <option value=""></option>
                         <option value="5">5</option>
                         <option value="4">4</option>
@@ -95,9 +98,7 @@ function RecipePage({meals, user}) {
                         <option value="1">1</option>
                     </select>
                     <br></br>
-                    <textarea rows = "5" cols = "60" name = "review" onChange={(e) => setReview(e.target.value)}>
-                        Enter review here...
-                    </textarea>
+                    <textarea rows = "5" cols = "60" name = "review" placeholder='Enter review here...' onChange={(e) => setReview(e.target.value)}></textarea>
                     <br></br>
                     <button type="submit">Submit Review</button>
                 </form>

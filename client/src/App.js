@@ -12,14 +12,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [meals, setMeals] = useState([])
 
-
-  //Gets meals
-  useEffect(() => {
-    fetch("http://localhost:3000/meals")
-      .then((res) => res.json())
-      .then((data) => setMeals(data))
-  }, [])
-  /************************* */
+  
 
   // Auto Login
     useEffect(() => {
@@ -37,6 +30,12 @@ function App() {
     setUser(user)
   }
 
+  function getMeals(mealList) {
+    setMeals(mealList)
+  }
+
+  console.log(meals)
+
   
   console.log("from app")
   if(!user) return <LoginPage onLogin={setUser} />
@@ -46,7 +45,7 @@ function App() {
         <Links user={user} setUser={setUser} />
         <Routes>
           <Route path='/' element={<Home currentUser={user} />} />
-          <Route path='/meals' element={<MealList meals={meals} />} />
+          <Route path='/meals' element={<MealList getMeals={getMeals} />} />
           <Route path='/signuppage' element={<SignUpPage onLogin={handleLogin} />} />
           <Route path='/meals/:id' element={<RecipePage meals={meals} user={user} />} />
         </Routes>

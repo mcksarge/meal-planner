@@ -1,10 +1,10 @@
 import React from "react";
 import MealCard from "./MealCard";
 import {useState, useEffect} from "react";
-import RecipePage from "./RecipePage";
 
-function Meals({meals}){
-    const [mealList, setMealList] = useState(meals)
+
+function Meals({getMeals, user}){
+    const [meals, setMeals] = useState([])
     const [showAddMeal, setShowAddMeal] = useState(false)
     const [name, setName] = useState("")
     const [recipe, setRecipe] = useState("")
@@ -12,17 +12,24 @@ function Meals({meals}){
     const [cooking_time, setCooking_time] = useState("")
 
 
-    let allMeals = mealList.map((meal, i) => {
+    //Gets meals
+  useEffect(() => {
+    fetch("http://localhost:3000/meals")
+      .then((res) => res.json())
+      .then((data) => setMeals(data))
+  }, [])
+  /************************* */
+
+  getMeals(meals)
+
+    let allMeals = meals.map((meal, i) => {
         return (
             <>
                 <MealCard 
                 key={i}
-                id={meal.id}
-                name={meal.name}
-                cooking_time={meal.cooking_time}
-                recipe={meal.recipe}
-                image={meal.image}
+                meal={meal}
                 onDeleteMeal={onDelete}
+                user={user}
                 />
             </>
         )
@@ -30,7 +37,7 @@ function Meals({meals}){
 
     function onDelete(deletedMeal){
         const updatedMeals = meals.filter((meal) => meal.id !== deletedMeal)
-        setMealList(updatedMeals)
+        setMeals(updatedMeals)
     }
 
     function handleNewMeal() {
@@ -54,7 +61,7 @@ function Meals({meals}){
             })
         })
         .then((res) => res.json())
-        .then((newMeal) => setMealList([...mealList, newMeal]))
+        .then((newMeal) => setMeals([...meals, newMeal]))
     }
     /********************* */
 
@@ -89,6 +96,7 @@ function Meals({meals}){
                 <div id="meal-list">
                     {allMeals}
                 </div>
+                
             </>
         )
     }
