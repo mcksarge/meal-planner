@@ -3,7 +3,7 @@ import MealCard from "./MealCard";
 import {useState, useEffect} from "react";
 
 
-function Meals({getMeals, user}){
+function Meals({user}){
     const [meals, setMeals] = useState([])
     const [showAddMeal, setShowAddMeal] = useState(false)
     const [name, setName] = useState("")
@@ -19,8 +19,7 @@ function Meals({getMeals, user}){
       .then((data) => setMeals(data))
   }, [])
   /************************* */
-
-  getMeals(meals)
+ 
 
     let allMeals = meals.map((meal, i) => {
         return (

@@ -10,7 +10,6 @@ import {useState, useEffect} from "react";
 
 function App() {
   const [user, setUser] = useState(null)
-  const [meals, setMeals] = useState([])
 
   
 
@@ -30,12 +29,6 @@ function App() {
     setUser(user)
   }
 
-  function getMeals(mealList) {
-    setMeals(mealList)
-  }
-
-  console.log(meals)
-
   
   console.log("from app")
   if(!user) return <LoginPage onLogin={setUser} />
@@ -45,9 +38,9 @@ function App() {
         <Links user={user} setUser={setUser} />
         <Routes>
           <Route path='/' element={<Home currentUser={user} />} />
-          <Route path='/meals' element={<MealList getMeals={getMeals} />} />
+          <Route path='/meals' element={<MealList />} />
           <Route path='/signuppage' element={<SignUpPage onLogin={handleLogin} />} />
-          <Route path='/meals/:id' element={<RecipePage meals={meals} user={user} />} />
+          <Route path='/meals/:id' element={<RecipePage user={user} />} />
         </Routes>
     </div>
   );
