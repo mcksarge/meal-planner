@@ -81,11 +81,9 @@ function Meals({user}){
                     <form onSubmit={handleSubmit}>
                         <input placeholder="Meal name" onChange={(e) => setName(e.target.value)}></input>
                         <br></br>
-                        <input placeholder="Cooking Time" onChange={(e) => setCooking_time(e.target.value)}></input>
+                        <input placeholder="Cooking Time in minutes" onChange={(e) => setCooking_time(e.target.value)}></input>
                         <br></br>
-                        <textarea rows = "5" cols = "60" name = "recipe" onChange={(e) => setRecipe(e.target.value)}>
-                            Enter recipe here...
-                        </textarea>
+                        <textarea id="meal-recipe-textbox" rows = "5" cols = "60" name = "recipe" onChange={(e) => setRecipe(e.target.value)}></textarea>
                         <br></br>
                         <input placeholder="Image URL" onChange={(e) => setImage(e.target.value)}></input>
                         <br></br>

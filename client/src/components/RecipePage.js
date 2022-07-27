@@ -5,10 +5,12 @@ import MealReview from './MealReview';
 function RecipePage({user}) {
     let params = useParams()
     const [currentMeal, setCurrentMeal] = useState([])
+    const [newReview, setNewReview] = useState([])
     const [loading, setLoading] = useState(false)
     const [showReview, setShowReview] = useState(false)
     const [review, setReview] = useState("")
     const [rating, setRating] = useState("")
+    const [fetchRef, setFetchRef] = useState(true)
 
 
     //Fetch current meal using params
@@ -16,19 +18,28 @@ function RecipePage({user}) {
         setLoading(true)
         fetch(`http://localhost:3000/meals/${params.id}`)
             .then((res) => res.json())
-            .then((data) => setCurrentMeal(data))
+            .then((data) => {
+                if(fetchRef){
+                    setCurrentMeal(data)
+                    setFetchRef(false)
+                }
+            })
             .finally(() => {
                 setLoading(false)
             })
-    }, [])
+    }, [fetchRef])
      /*************** */
     
     function handleAddReview() {
         setShowReview(true)
     }
 
+    function handleDelete(e) {
+        setFetchRef(true)
+    }
+    
+
     function handleSubmit(e) {
-        e.preventDefault()
         let user_id = user.id
         let meal_id = currentMeal.id
 
@@ -59,7 +70,6 @@ function RecipePage({user}) {
         if(!showReview){
             return (
                 <div>
-                    <p>Hello Recipes!  Get your recipes here!</p>
                     <h1>{currentMeal.name}</h1>
                     <h3>Cooking Time: {currentMeal.cooking_time} minutes</h3>
                     <img src={currentMeal.image} className="meal-image"></img>
@@ -71,9 +81,10 @@ function RecipePage({user}) {
                             <h2>Reviews:</h2>
                             {mealReviews?.map((review, i) => {
                                  return (
-                                    <MealReview key={i} review={review} />
+                                    <MealReview key={i} review={review} handleDelete={handleDelete} />
                                 )
                             })}
+
                         </div>
                     </div>
                 </div>

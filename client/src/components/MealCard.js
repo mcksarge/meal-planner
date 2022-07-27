@@ -1,7 +1,7 @@
-import { NavLink, Routes, Route } from 'react-router-dom'
-import RecipePage from "./RecipePage";
+import { NavLink} from 'react-router-dom'
 
-function MealCard({meal, onDeleteMeal, user}) {
+
+function MealCard({meal, onDeleteMeal}) {
 
 
     function handleDelete() {
@@ -24,9 +24,6 @@ function MealCard({meal, onDeleteMeal, user}) {
             <img src={meal.image} alt={meal.name} className="meal-image-card"></img>
             <br></br>
             <NavLink to={`/meals/${meal.id}`} className="recipe-btn">Recipe</NavLink>
-            {/* <Routes>
-                <Route path=':id' element={<RecipePage meal={meal} user={user} />} />
-            </Routes>  */}
         </div>
     )
 }
