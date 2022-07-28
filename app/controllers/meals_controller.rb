@@ -2,7 +2,7 @@ class MealsController < ApplicationController
     skip_before_action :authorized
     
     def index
-        meals = Meal.all
+        meals = Meal.order(created_at: :desc)
         render json: meals
     end
 
@@ -26,6 +26,18 @@ class MealsController < ApplicationController
             render json: meal, include: [:reviews]
         else
             render json: {errors: ["Meal not found"]}, status: :no_content
+        end
+    end
+
+    def update
+        meal = Meal.find_by(id: params[:id])
+        if meal
+            meal.update(
+                likes: params[:likes]
+            )
+            render json: meal
+        else
+            render json: {errors: ["Meal not found"]}, status: :unprocessable_entity
         end
     end
 

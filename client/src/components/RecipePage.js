@@ -63,6 +63,7 @@ function RecipePage({user}) {
 
     //Assign reviews to variable
     const mealReviews = currentMeal.reviews
+    console.log(mealReviews)
 
     if(loading){
         return <p>Data is loading...</p>
@@ -79,11 +80,11 @@ function RecipePage({user}) {
                     <div className="meal-review">
                         <div>
                             <h2>Reviews:</h2>
-                            {mealReviews?.map((review, i) => {
+                            {/* {mealReviews?.map((review, i) => {
                                  return (
                                     <MealReview key={i} review={review} handleDelete={handleDelete} />
                                 )
-                            })}
+                            })} */}
 
                         </div>
                     </div>

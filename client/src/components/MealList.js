@@ -56,11 +56,12 @@ function Meals({user}){
                 name,
                 cooking_time,
                 recipe,
-                image
+                image,
+                likes: 0
             })
         })
         .then((res) => res.json())
-        .then((newMeal) => setMeals([...meals, newMeal]))
+        .then((newMeal) => setMeals([newMeal, ...meals]))
     }
     /********************* */
 

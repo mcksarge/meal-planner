@@ -25,7 +25,8 @@ ingredients: ["1 cup ketchup",
 "1/2 teaspoon granulated garlic", 
 "1/2 teaspoon salt",
 "1/4 teaspoon ground cumin"],
-cooking_time: 25)
+cooking_time: 25,
+likes: 61)
 
 Meal.create(name: "Salmon Avocado Poke Bowl", 
 image: "https://www.simplyrecipes.com/thmb/oRhSZuDTZO_KwqIaaHbS4CE4blk=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2017__03__2017-04-26-PokeBowls-6-8947f9af075f487aaa9c5afd5d829ba7.jpg", 
@@ -47,7 +48,8 @@ ingredients: ["1 cup short-grain white rice",
 "1 teaspoon toasted sesame oil",
 "1/4 teaspoon garlic powder",
 "2 scallions, thinly sliced"],
-cooking_time: 20)
+cooking_time: 20,
+likes: 32)
 
 Meal.create(name: "Grilled Peaches", 
 image: "https://www.simplyrecipes.com/thmb/HdvihpVI6HKzpKJLuRUzR7SZ8pc=/648x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Grilled_Peaches-LEAD-03-516100f9bb514401bbbeee6e962edeb9.jpg", 
@@ -66,5 +68,6 @@ ingredients: ["2 tablespoons light brown sugar, tightly packed",
 "4 ripe yellow peaches or nectarines, cut in half and pit removed",
 "2 tablespoons unsalted butter, melted",
 "8 scoops vanilla ice cream, for serving"],
-cooking_time: 16)
+cooking_time: 16,
+likes: 55)
 

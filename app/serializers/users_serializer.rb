@@ -1,3 +1,3 @@
 class UsersSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :meals
 end

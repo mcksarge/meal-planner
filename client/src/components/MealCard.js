@@ -1,7 +1,9 @@
-import { NavLink} from 'react-router-dom'
+import { NavLink} from 'react-router-dom';
+import { useState } from 'react';
 
 
-function MealCard({meal, onDeleteMeal}) {
+function MealCard({meal, onDeleteMeal, onLike}) {
+    const [likes, setLikes] = useState(meal.likes)
 
 
     function handleDelete() {
@@ -13,12 +15,29 @@ function MealCard({meal, onDeleteMeal}) {
                 onDeleteMeal(meal.id)
             }
         })
-    }
+    };
+
+    function handleLike() {
+        let liked = likes + 1
+
+        fetch(`/meals/${meal.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "likes": liked
+            })
+        })
+        .then(res => res.json())
+        .then(data => setLikes(data.likes))
+    };
 
 
     return (
         <div className="meal-card">
             <button className="delete-meal-btn" onClick={handleDelete}>X</button>
+            <button className="likes-btn" onClick={handleLike}>{likes} Likes</button>
             <h3>{meal.name}</h3>
             <h4>Cooking Time: {meal.cooking_time} minutes</h4>
             <img src={meal.image} alt={meal.name} className="meal-image-card"></img>
@@ -26,6 +45,6 @@ function MealCard({meal, onDeleteMeal}) {
             <NavLink to={`/meals/${meal.id}`} className="recipe-btn">Recipe</NavLink>
         </div>
     )
-}
+};
 
 export default MealCard
