@@ -25,6 +25,17 @@ class ReviewsController < ApplicationController
         render json: review.user
     end
 
+    def summary
+        user = User.find_by(id: params[:id])
+        reviews = Review.where(user_id: user.id)
+        if reviews
+            meals = reviews
+            render json: meals
+        else
+            render json: {errors: ["User not found"]}, status: :not_found
+        end
+    end
+
     def destroy
         review = Review.find_by(id: params[:id])
         if review

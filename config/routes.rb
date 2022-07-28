@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "/meals/:id/summary", to: "meals#summary"
   get "/reviews/:id/user", to: "reviews#user"
   get "/meals/sort", to: "meals#sort"
-  get "/users/:id/summary", to: "users#summary"
+  get "/reviews/summary/:id", to: "reviews#summary"
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

@@ -2,7 +2,7 @@ import { NavLink} from 'react-router-dom';
 import { useState } from 'react';
 
 
-function MealCard({meal, onDeleteMeal, onLike}) {
+function MealCard({meal, onDeleteMeal}) {
     const [likes, setLikes] = useState(meal.likes)
 
 

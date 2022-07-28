@@ -25,8 +25,7 @@ class UsersController < ApplicationController
         user = User.find_by(id: params[:id])
         review = Review.find_by(user_id: params[:id])
         if user
-            meal = Meal.find_by(id: review.meal_id)
-            render json: meal
+            render json: review
         else
             render json: {errors: ["User not found"]}, status: :not_found
         end
