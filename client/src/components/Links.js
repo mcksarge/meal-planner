@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-function Links({user, setUser}) {
+function Links({setUser}) {
 
     //Handles logout
     function handleLogout() {

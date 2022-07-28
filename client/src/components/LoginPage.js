@@ -7,14 +7,7 @@ function LoginPage({onLogin}){
     const [errors, setErrors] = useState([])
     const [createAccount, setCreateAccount] = useState(false)
 
-    function handleCreateAccount(e) {
-        e.preventDefault()
-        console.log(e)
-
-        
-    }
-
-
+    //Handles form submission
     function handleSubmit(e) {
         e.preventDefault();
         
@@ -60,7 +53,9 @@ function LoginPage({onLogin}){
             })
         } 
     }
+    /*********************** */
 
+    //Hides or shows the create account form
     function handleShowLogin() {
         if(!createAccount){
             setCreateAccount(true)
@@ -68,6 +63,7 @@ function LoginPage({onLogin}){
             setCreateAccount(false)
         }
     }
+    /**************************** */
 
     if(createAccount == false) {
         console.log("Login")

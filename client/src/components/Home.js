@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
+
 
 function Home({currentUser}) {
-
-
 
     return (
         <div>
@@ -14,10 +12,6 @@ function Home({currentUser}) {
             <p>- Leave reviews for meals you've tried</p>
             <br></br>
             <img src="https://th.bing.com/th/id/OIP.m-8OgZGFo1xuXhIFmdwyYwHaE8?pid=ImgDet&rs=1" alt="A large table of food"></img>
-            <div>
-               
-            </div>
-
         </div>
     )
 
