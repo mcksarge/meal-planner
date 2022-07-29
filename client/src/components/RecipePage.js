@@ -15,7 +15,7 @@ function RecipePage({user}) {
     //Fetch current meal using params
     useEffect(() => {
         setLoading(true)
-        fetch(`http://localhost:3000/meals/${params.id}`)
+        fetch(`/meals/${params.id}`)
             .then((res) => res.json())
             .then((data) => {
                 if(fetchRef){

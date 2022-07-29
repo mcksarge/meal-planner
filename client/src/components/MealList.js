@@ -14,7 +14,7 @@ function Meals({user}){
 
     //Gets meals
   useEffect(() => {
-    fetch("http://localhost:3000/meals")
+    fetch("/meals")
       .then((res) => res.json())
       .then((data) => setMeals(data))
   }, [])
