@@ -66,7 +66,7 @@ function LoginPage({onLogin}){
     /**************************** */
 
     if(createAccount == false) {
-        console.log("Login")
+        
         return (
             <div className="login-page">
                 <div className="login-form-div">
@@ -85,7 +85,7 @@ function LoginPage({onLogin}){
             </div>
         )
     } else {
-        console.log("Sign up")
+        
         return (
             <div className='login-page'>
                 <div className="login-form-div">

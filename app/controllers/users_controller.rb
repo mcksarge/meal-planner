@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     skip_before_action :authorized, only: [:create, :show, :index]
 
+    # Create user account
     def create
         user = User.create(user_params)
         if user.valid?
@@ -11,24 +12,16 @@ class UsersController < ApplicationController
         end
     end
 
+    # Get specific User
     def show
         current_user = User.find(session[:user_id])
         render json: current_user
     end
 
+    # Get all users
     def index
         users = User.all
         render json: users
-    end
-
-    def summary
-        user = User.find_by(id: params[:id])
-        review = Review.find_by(user_id: params[:id])
-        if user
-            render json: review
-        else
-            render json: {errors: ["User not found"]}, status: :not_found
-        end
     end
 
     private

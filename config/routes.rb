@@ -4,16 +4,19 @@ Rails.application.routes.draw do
     resources :reviews, only: [:show, :index]
   end
   resources :reviews
-  
 
-  get "/meals/:id/summary", to: "meals#summary"
-  get "/reviews/:id/user", to: "reviews#user"
-  get "/meals/sort", to: "meals#sort"
-  get "/reviews/summary/:id", to: "reviews#summary"
-
+  # Session
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-
+  
+  # Review
+  get "/reviews/:id/user", to: "reviews#user"
+  
+  
+  # Meal
+  get "/meals/sort", to: "meals#sort"
+ 
+  # User
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   

@@ -5,7 +5,7 @@ import { useState } from 'react';
 function MealCard({meal, onDeleteMeal}) {
     const [likes, setLikes] = useState(meal.likes)
 
-
+    //Handles Deletion of meal
     function handleDelete() {
         fetch(`/meals/${meal.id}`, {
             method: "DELETE"
@@ -16,7 +16,9 @@ function MealCard({meal, onDeleteMeal}) {
             }
         })
     };
+    //************************ */
 
+    //Handles Like of meal
     function handleLike() {
         let liked = likes + 1
 
@@ -32,7 +34,7 @@ function MealCard({meal, onDeleteMeal}) {
         .then(res => res.json())
         .then(data => setLikes(data.likes))
     };
-
+    //********************** */
 
     return (
         <div className="meal-card">

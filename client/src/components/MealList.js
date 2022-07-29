@@ -20,7 +20,7 @@ function Meals({user}){
   }, [])
   /************************* */
  
-
+  //Iterate and send meals to Meal Card
     let allMeals = meals.map((meal, i) => {
         return (
             <>
@@ -33,15 +33,20 @@ function Meals({user}){
             </>
         )
     })
+    /************************** */
 
+    //Handles deletion of meal
     function onDelete(deletedMeal){
         const updatedMeals = meals.filter((meal) => meal.id !== deletedMeal)
         setMeals(updatedMeals)
     }
+    /****************** */
 
+    //Refreshes list on creation of new meal
     function handleNewMeal() {
         setShowAddMeal(true)
     }
+    /****************** */
 
     //Add meal
     function handleSubmit(e) {
@@ -66,7 +71,7 @@ function Meals({user}){
     /********************* */
 
     if(!showAddMeal){
-        return (
+        return ( 
             <>
                 <button id="new-recipe-btn" onClick={handleNewMeal}>Add Recipe</button>
                 <div id="meal-list">

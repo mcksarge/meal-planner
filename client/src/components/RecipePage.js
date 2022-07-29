@@ -5,7 +5,6 @@ import MealReview from './MealReview';
 function RecipePage({user}) {
     let params = useParams()
     const [currentMeal, setCurrentMeal] = useState([])
-    const [newReview, setNewReview] = useState([])
     const [loading, setLoading] = useState(false)
     const [showReview, setShowReview] = useState(false)
     const [review, setReview] = useState("")
@@ -30,15 +29,19 @@ function RecipePage({user}) {
     }, [fetchRef])
      /*************** */
     
+     //Changes state to show add review fields
     function handleAddReview() {
         setShowReview(true)
     }
+    /******************* */
 
+    //Refreshes page after deletion
     function handleDelete(e) {
         setFetchRef(true)
     }
+    /************** */
     
-
+    //Handles sumbission of form
     function handleSubmit(e) {
         let user_id = user.id
         let meal_id = currentMeal.id
@@ -58,12 +61,12 @@ function RecipePage({user}) {
         })
         .then(res => res.json())
         .then(data => (data))
-
     }
+    /*********************** */
 
-    //Assign reviews to variable
+    //Assign reviews to variable for mapping
     const mealReviews = currentMeal.reviews
-    console.log(mealReviews)
+    /**************************** */
 
     if(loading){
         return <p>Data is loading...</p>
@@ -80,11 +83,11 @@ function RecipePage({user}) {
                     <div className="meal-review">
                         <div>
                             <h2>Reviews:</h2>
-                            {/* {mealReviews?.map((review, i) => {
+                            {mealReviews?.map((review, i) => {
                                  return (
                                     <MealReview key={i} review={review} handleDelete={handleDelete} />
                                 )
-                            })} */}
+                            })}
 
                         </div>
                     </div>
@@ -104,7 +107,6 @@ function RecipePage({user}) {
                         <br></br>
                         <label>Select Rating: </label>
                         <select onChange={(e) => setRating(e.target.value)}>
-                            
                             <option value=""></option>
                             <option value="5">5</option>
                             <option value="4">4</option>

@@ -1,11 +1,13 @@
 class MealsController < ApplicationController
     skip_before_action :authorized
     
-    def index
+    # Show all Meals
+    def index 
         meals = Meal.order(created_at: :desc)
         render json: meals
     end
 
+    # Create Meals
     def create
         meal = Meal.create(meal_params)
         if meal.valid?
@@ -15,11 +17,7 @@ class MealsController < ApplicationController
         end
     end
 
-    def summary
-        meal = Meal.find(params[:id])
-        render json: meal.reviews
-    end
-
+    # Show specific meal, include associated reviews
     def show
         meal = Meal.find_by(id: params[:id])
         if meal
@@ -29,6 +27,7 @@ class MealsController < ApplicationController
         end
     end
 
+    # Update likes of meal
     def update
         meal = Meal.find_by(id: params[:id])
         if meal
@@ -41,6 +40,7 @@ class MealsController < ApplicationController
         end
     end
 
+    # Delete meal
     def destroy
         meal = Meal.find_by(id: params[:id])
         if meal
@@ -54,7 +54,7 @@ class MealsController < ApplicationController
     private
 
     def meal_params
-        params.permit(:name, :recipe, :cooking_time, :image)
+        params.permit(:name, :recipe, :cooking_time, :image, :likes)
     end
 
 end

@@ -3,17 +3,18 @@ import {useEffect, useState} from 'react';
 
 function MealReview(props) {
     const [user, setUser] = useState(null)
-    const [edit, setEdit] = useState(false)
 
     let review = props.review
     
-
+    //Fetches User associated with Review
     useEffect(() => {
         fetch(`/reviews/${review.id}/user`)
         .then(res => res.json())
         .then(data => setUser(data.name))
     }, [])
+    /********************* */
 
+    //Handles deletion of Review
     function handleDelete(e) {
         fetch(`/reviews/${review.id}`, {
             method: "DELETE"
@@ -21,7 +22,7 @@ function MealReview(props) {
         .then(res => res.json())
         .then(data => props.handleDelete(data))
     }
-
+    /******************* */
     
     
     return (
@@ -31,7 +32,6 @@ function MealReview(props) {
             <i>{user}</i>
             <br></br>
             <button onClick={handleDelete}>Delete</button>
-            <button>Edit</button>
         </div>
     )
 }
