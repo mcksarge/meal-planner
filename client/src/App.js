@@ -38,8 +38,8 @@ function App() {
         <Links user={user} setUser={setUser} />
         <Routes>
           <Route path='/' element={<Home currentUser={user} />} />
-          <Route path='/meals' element={<MealList />} />
-          <Route path='/meals/:id' element={<RecipePage user={user} />} />
+          <Route path='/meal' element={<MealList />} />
+          <Route path='/meal/:id' element={<RecipePage user={user} />} />
         </Routes>
     </div>
   );
