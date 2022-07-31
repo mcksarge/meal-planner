@@ -50,7 +50,6 @@ function Meals({user}){
 
     //Add meal
     function handleSubmit(e) {
-        e.preventDefault()
 
         fetch('/meals', {
             method: "POST",
