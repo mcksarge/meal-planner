@@ -48,7 +48,7 @@ function LoginPage({onLogin}){
                     .then((user) => onLogin(user))
                 } else {
                     res.json()
-                    .then((error) => setErrors(error.errors));
+                    .then((err) => setErrors(err.errors));
                 }
             })
         } 
@@ -65,8 +65,13 @@ function LoginPage({onLogin}){
     }
     /**************************** */
 
+    const errorMessage = errors.map((error) => {
+        <p key={error.login}>{error.login}</p>
+    })
+
+
     if(createAccount == false) {
-        
+        //Sign In
         return (
             <div className="login-page">
                 <div className="login-form-div">
@@ -78,6 +83,14 @@ function LoginPage({onLogin}){
                         <br></br>
                         <button id="sign-in-btn">Sign in</button>
                         <br></br>
+                        {errors.length > 0 && (
+                            <ul style={{ color: "red" }}>
+                            {errors.map((error) => (
+                                <li key={error}>{error.login}</li>
+                            ))}
+                            </ul>
+                        )}
+                        <br></br>
                         <p>Don't have an account?</p>
                     </form>
                     <button onClick={handleShowLogin}>Create Account</button>
@@ -85,7 +98,7 @@ function LoginPage({onLogin}){
             </div>
         )
     } else {
-        
+        //Sign Up
         return (
             <div className='login-page'>
                 <div className="login-form-div">
